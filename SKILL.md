@@ -21,6 +21,7 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 4. 自动补全：拜访日期=今天、业务员=录入人、上样日期=照片水印时间（见下）。
 5. 写入：`+record-batch-create` / `+record-batch-update`（字段映射见 references/base-schema.md，**select 单选字段写选项名字符串、多选写数组**，link 写 `[{"id":"<record_id>"}]`，datetime 写 `YYYY-MM-DD HH:mm:ss`）。
 6. 回读验证：`+record-list` 回读新记录，核对客户关联、日期、金额守恒，向使用者回执（建了哪张表哪条、照片归档位置、水印日期、存疑字段）。
+7. 生成工作群汇报文案：每次录入完成后，按 references/entry-template.md 的「工作群汇报文案」模板，生成一段可直接复制发工作群的拜访记录文字；无内容的板块自动省略，数字、型号与录入一致。
 
 ## 每周订单数据导入（每周一次）
 
