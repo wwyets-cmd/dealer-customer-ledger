@@ -9,7 +9,7 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 
 ## 安装（首次使用必须前置确认）
 
-1. **确认录入人**：询问"本对话的录入人/业务员姓名"（代理商团队 200+ 人，不预置名单，使用者自报姓名）。姓名在对话内记住，之后本对话所有录入自动填入「拜访业务员/负责业务员」。
+1. **确认录入人**：询问"本对话的录入人/业务员姓名"（不预置名单，使用者自报姓名）。姓名在对话内记住，之后本对话所有录入自动填入「拜访业务员/负责业务员」。
 2. **确认 Base（代理商自行复制模板）**：每位代理商**复制一份模板**得到自己的表，录进自己副本。模板链接 `https://my.feishu.cn/base/FyKib8lh8aIqJxsHppUcVkDnnEb`（5 表结构齐全、无示例数据）。**完整复制教程见 references/base-copy-guide.md**（打开模板 → 登录飞书 → 「⋯」→ 复制 → 命名 → 确认 5 表 → 把副本链接发回）。注意：模板需管理员对代理商开「可编辑」权限才能复制；不要在模板母版上直接录数据。
 3. 确认后向使用者展示详细录入模板（见 references/entry-template.md，含口语示例），开始录入。
 
@@ -19,7 +19,7 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 2. 词库匹配（内部处理，不向使用者展示纠错清单）：按 references/vocab-errors.md 归一（东泰=DTC、脚链→铰链、智能收纳舱→升降机），拿不准复述确认。
 3. 客户存在性：`+record-list` 查客户名单；存在→挂关联，不存在→先建档再关联。
 4. 自动补全：拜访日期=今天、业务员=录入人、上样日期=照片水印时间（见下）。
-5. 写入：`+record-batch-create` / `+record-batch-update`（字段映射见 references/base-schema.md），select 字段写选项名数组，link 写 `[{"id":"<record_id>"}]`，datetime 写 `YYYY-MM-DD HH:mm:ss`。
+5. 写入：`+record-batch-create` / `+record-batch-update`（字段映射见 references/base-schema.md，**select 单选字段写选项名字符串、多选写数组**，link 写 `[{"id":"<record_id>"}]`，datetime 写 `YYYY-MM-DD HH:mm:ss`）。
 6. 回读验证：`+record-list` 回读新记录，核对客户关联、日期、金额守恒，向使用者回执（建了哪张表哪条、照片归档位置、水印日期、存疑字段）。
 
 ## 上样照片登记（特殊流程）
