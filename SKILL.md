@@ -10,7 +10,7 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 ## 安装（首次使用必须前置确认）
 
 1. **确认录入人**：询问"本对话的录入人/业务员姓名"（代理商团队 200+ 人，不预置名单，使用者自报姓名）。姓名在对话内记住，之后本对话所有录入自动填入「拜访业务员/负责业务员」。
-2. **确认 Base（多人共用一套）**：团队所有业务员写入**同一套多维表格**，不复制、不一人一表。安装时确认团队共享 Base 链接（由团队管理员统一指定，例如模板 base `https://my.feishu.cn/base/FyKib8lh8aIqJxsHppUcVkDnnEb` 初始化后即成为共享表）。录入人靠第 1 步确认的姓名区分，看板按录入人自动分组。权限：由 Base 管理员为团队业务员开通编辑权限，多人在线协作写同一套数据。
+2. **确认 Base（代理商自行复制模板）**：每位代理商**复制一份模板**得到自己的表，录进自己副本。模板链接 `https://my.feishu.cn/base/FyKib8lh8aIqJxsHppUcVkDnnEb`（5 表结构齐全、无示例数据）。**完整复制教程见 references/base-copy-guide.md**（打开模板 → 登录飞书 → 「⋯」→ 复制 → 命名 → 确认 5 表 → 把副本链接发回）。注意：模板需管理员对代理商开「可编辑」权限才能复制；不要在模板母版上直接录数据。
 3. 确认后向使用者展示详细录入模板（见 references/entry-template.md，含口语示例），开始录入。
 
 ## 核心工作流
@@ -39,9 +39,10 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 
 ## 参考文档
 
-- references/entry-template.md — 极简录入模板、自动补全清单、录入回执
+- references/entry-template.md — 详细录入模板（含口语示例）、自动补全清单、录入回执
 - references/base-schema.md — 5 张表结构、字段映射、关联、只读字段
-- references/vocab-errors.md — 品牌/产品/城市词库与口音纠错规则
+- references/vocab-errors.md — 品牌/产品/城市词库与口音归一规则
+- references/base-copy-guide.md — 代理商复制模板的完整教程（打开→登录→复制→检查→发链接）
 
 ## 铁律
 
