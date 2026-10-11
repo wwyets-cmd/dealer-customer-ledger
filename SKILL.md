@@ -22,9 +22,9 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 5. 写入：`+record-batch-create` / `+record-batch-update`（字段映射见 references/base-schema.md，**select 单选字段写选项名字符串、多选写数组**，link 写 `[{"id":"<record_id>"}]`，datetime 写 `YYYY-MM-DD HH:mm:ss`）。
 6. 回读验证：`+record-list` 回读新记录，核对客户关联、日期、金额守恒，向使用者回执（建了哪张表哪条、照片归档位置、水印日期、存疑字段）。
 
-## 月度订单数据导入（每月一次）
+## 每周订单数据导入（每周一次）
 
-使用者把当月订单/回单明细（Excel、表格、截图）发来，代理逐行识别写入**回单记录**（订单日期/客户名称/产品/数量/单价（元）/总金额（元））；产品按词汇表归一为炬森产品；数字逐项回读复核；全部写入后回读合计与客户数向使用者核对。
+使用者每周把销售/订单明细 Excel（.xls/.xlsx/CSV/截图）发来，代理自动分析识别后写入**回单记录**。导出信息须包含：订单日期、客户名、产品、数量、单价、总金额。**完整导入教程见 references/import-guide.md**（字段要求/列名别名/产品归一/客户匹配/数字复核/导入后校验），按该文档执行。
 
 ## 上样照片登记（特殊流程）
 
@@ -44,6 +44,7 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 ## 参考文档
 
 - references/entry-template.md — 详细录入模板（含口语示例）、自动补全清单、录入回执
+- references/import-guide.md — 每周 Excel 订单数据导入教程（字段要求、识别规则、导入后校验）
 - references/base-schema.md — 5 张表结构、字段映射、关联、只读字段
 - references/vocab-errors.md — 品牌/产品/城市词库与口音归一规则
 - references/base-copy-guide.md — 代理商复制模板的完整教程（打开→登录→复制→检查→发链接）
