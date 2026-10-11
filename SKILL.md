@@ -11,12 +11,12 @@ description: 代理商客户拜访与开发台账的语音录入与登记技能�
 
 1. **确认录入人**：询问"本对话的录入人/业务员姓名"（代理商团队 200+ 人，不预置名单，使用者自报姓名）。姓名在对话内记住，之后本对话所有录入自动填入「拜访业务员/负责业务员」。
 2. **确认 Base**：询问使用者使用哪个多维表格链接。默认提供模板 base `https://my.feishu.cn/base/FyKib8lh8aIqJxsHppUcVkDnnEb`（5 表结构齐全、无示例数据），引导使用者：打开链接 → 飞书多维表格「复制」→ 生成自己的副本 → 把新链接发回。新链接的 base token 即后续写入目标。用户已提供自己的 base 链接时直接使用。
-3. 确认后向使用者展示极简录入模板（见 references/entry-template.md），开始录入。
+3. 确认后向使用者展示详细录入模板（见 references/entry-template.md，含口语示例），开始录入。
 
 ## 核心工作流
 
-1. 解析语音 → 按 references/entry-template.md 的板块（客户/拜访/竞品/上样/采购）归类。
-2. 口音纠错：按 references/vocab-errors.md 词库匹配（东泰=DTC、脚链→铰链等强制规则），拿不准复述确认。
+1. 解析语音 → 按 references/entry-template.md 的板块（客户/拜访/竞品/上样/采购）归类；使用者信息说得越详细越好。
+2. 词库匹配（内部处理，不向使用者展示纠错清单）：按 references/vocab-errors.md 归一（东泰=DTC、脚链→铰链、智能收纳舱→升降机），拿不准复述确认。
 3. 客户存在性：`+record-list` 查客户名单；存在→挂关联，不存在→先建档再关联。
 4. 自动补全：拜访日期=今天、业务员=录入人、上样日期=照片水印时间（见下）。
 5. 写入：`+record-batch-create` / `+record-batch-update`（字段映射见 references/base-schema.md），select 字段写选项名数组，link 写 `[{"id":"<record_id>"}]`，datetime 写 `YYYY-MM-DD HH:mm:ss`。
